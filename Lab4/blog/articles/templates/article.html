@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+        <title>One article</title>
+        {% load static from staticfiles %}
+        <link rel="stylesheet" href="{% static "css/article.css"%}">
+<body>
+    <div class="article">    
+        <div class="header">
+        <div class="archive">
+        {% load static from staticfiles %}
+        <img src="{% static "im/logo.png"%}" alt="Hello ^_^" height="80" width="40"/>    
+        <h3><a href="../../archive/">All articles</a></h3>  
+            <div class="one-post">    
+                <h2 class="post-title">{{ post.title }}</h2>    
+                <div class="article-info">        
+                    <div class="article-author">{{ post.author.username }}</div>        
+                    <div class="article-created-date">{{ post.created_date }}</div>    
+                </div>    
+                <p class="article-text">{{ post.get_content }}</p> 
+            </div>
+        </div>
+    </div> 
+</body>
+</html>
