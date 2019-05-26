@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <title>Archive of all articles</title>
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static "/css/article.css"%}">   
+<body> 
+    <div class="archive1">   
+        <div class="header">
+        {% load static from staticfiles %}
+        <img src="{% static "im/logo.png"%}" alt="Hello ^_^" height="80" width="40"/>    
+        </div>    
+        <div class="archive">
+        <div align = right><p><h3><a href="../../register/"><right>Sign up</a></h3></p></div>
+        <div align = right><p><h3><a href="../../login/"><right>Log in</a></h3></p></div>
+        <div align = left><p><h3><a href="../../article/new/"><right> New article </a></h3></p></div>
+        {% for post in posts %}
+            <div class="one-post"> 
+                {% load static from staticfiles %}  
+                <h2 class="article-title"><a href="../../article/{{post.id}}">{{ post.title }}</a></h2>   
+                <div class="article-info">        
+                    <div class="article-author">{{ post.author.username }}</div>        
+                    <div class="article-created-date">{{ post.created_date }}</div>    
+                </div>    
+                <p class="article-text">{{ post.get_excerpt }}</p> 
+            </div>
+        {% endfor %}
+        </div> 
+    </div>
+</body> 
+</html>
