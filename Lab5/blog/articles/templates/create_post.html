@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html>    
+    <head>        
+        <title>Django Public Blog - create article</title> 
+        {% load static from staticfiles %}
+        <link rel="stylesheet" href="{% static "/css/article.css"%}">    
+    </head>    
+<body>
+    <div class="create_post">   
+            <div class="header">
+            {% load static from staticfiles %}
+            <img src="{% static "im/logo.png"%}" alt="Hello ^_^" height="80" width="40"/>    
+            </div>            
+        <div class="content">            
+            <p align="center"><h1><center>Write your article here</h1></p>            
+            <form method="POST">{% csrf_token %}
+                <p align="center"><h2><center>Article name</h2></p>               
+                <p align="center"><input type="text" size="40" name="title" placeholder="Type article name" value="{{ form.title }}"></p>
+                <p align="center"><h2><center>Article text</h2></p>                
+                <p align="center"><textarea name="text" cols="40" rows="3" placeholder="Type article text">{{ form.text }}</textarea></p>                
+                <p align="center"><input type="submit" value="Save"></p>           
+            </form>
+            {{ form.errors }}        
+        </div>
+    </div>    
+</body> 
+</html> 
